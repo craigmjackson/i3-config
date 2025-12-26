@@ -37,6 +37,8 @@ client.placeholder        #000000 #0b1133 #444444 #000000   #000000
 
 client.background         #ffffff
 
+gaps inner 10px
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -207,4 +209,17 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+                background #0b1133
+                statusline #a8a8a8
+                separator #a8a8a8
+
+                focused_workspace  #4c7899 #285577 #ffffff
+                active_workspace   #333333 #5f676a #ffffff
+                inactive_workspace #333333 #222222 #888888
+                urgent_workspace   #2f343a #900000 #ffffff
+                binding_mode       #2f343a #900000 #ffffff
+        }
 }
+
+for_window [all] title_window_icon yes
