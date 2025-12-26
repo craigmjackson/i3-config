@@ -14,18 +14,28 @@ set $mod Mod4
 
 # Example of managing 3 montiors
 # exec --no-startup-id bash -c 'sleep 5'
-# exec --no-startup-id xrandr --output DisplayPort-0 --pos 1080x320 --output DisplayPort-1 --left-of DisplayPort-0 --rotate right --pos 0x0 --output HDMI-A-0 --right-of DisplayPort-0 --pos 4920x320
-# workspace 1 output DisplayPort-1
-# workspace 2 output DisplayPort-0
-# workspace 3 output HDMI-A-0
+# exec --no-startup-id xrandr --output DP-1 --pos 1080x320 --output DP-2 --left-of DP-1 --rotate right --pos 0x0 --output HDMI-1 --right-of DP-1 --pos 4920x320
+# workspace 1 output DP-2
+# workspace 2 output DP-1
+# workspace 3 output HDMI-1
 # 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font pango:Hack Nerd Font 10
+font pango:Hack Nerd Font 12
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+# class                   border  backgr. text    indicator child_border
+client.focused            #86c1d8 #0b1133 #a8a8a8 #a8a8a8   #86c1d8
+client.focused_inactive   #86c1d8 #0b1133 #a8a8a8 #a8a8a8   #86c1d8
+client.focused_tab_title  #86c1d8 #0b1133 #a8a8a8 #a8a8a8   #86c1d8
+client.unfocused          #000000 #0b1133 #444444 #000000   #000000
+client.urgent             #86c1d8 #0b1133 #a8a8a8 #a8a8a8   #86c1d8
+client.placeholder        #000000 #0b1133 #444444 #000000   #000000
+
+client.background         #ffffff
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -65,7 +75,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+Shift+q exec xkill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 20 -fn "Hack Nerd Font Mono-12" -nb "#0b1133" -nf "#ffffff" -sb "#ffffff" -sf "#000000"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
