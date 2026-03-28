@@ -12,12 +12,10 @@
 set $mod Mod4
 #set $mod Lock
 
-# Example of managing 3 montiors
-# exec --no-startup-id bash -c 'sleep 5'
-# exec --no-startup-id xrandr --output DP-1 --pos 1080x320 --output DP-2 --left-of DP-1 --rotate right --pos 0x0 --output HDMI-1 --right-of DP-1 --pos 4920x320
-# workspace 1 output DP-2
-# workspace 2 output DP-1
-# workspace 3 output HDMI-1
+exec --no-startup-id bash -c '~/.config/i3/setup_displays.sh'
+workspace 1 output DVI-I-3-2
+workspace 2 output HDMI-1-0
+workspace 3 output DVI-I-2-1
 # 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
