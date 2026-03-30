@@ -13,18 +13,20 @@ set $mod Mod4
 #set $mod Lock
 
 # script to setup displays for multiple monitors, very specific to my setup
-# exec --no-startup-id bash -c '~/.config/i3/setup_displays.sh'
+exec --no-startup-id bash -c '~/.config/i3/setup_displays.sh'
 # script to detect changes in the monitors, very specific to my setup
-# exec --no-startup-id bash -c '~/.config/i3/detect_monitors.sh'
+exec --no-startup-id bash -c '~/.config/i3/detect_monitors.sh'
 # setup workspaces on each display
 workspace 1 output DVI-I-3-2
 workspace 2 output HDMI-1-0
 workspace 3 output DVI-I-2-1
+# start a power manager.  Run "xfce4-power-manager-config" to configure
+exec --no-startup-id xfce4-power-manager
 # 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font pango:Hack Nerd Font 12
+font pango:Hack Nerd Font Mono 14
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -80,6 +82,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -i -l 20 -fn "Hack Nerd Font Mono-12" -nb "#0b1133" -nf "#ffffff" -sb "#ffffff" -sf "#000000"
+bindsym $mod+o exec --no-startup-id bash -c '~/.config/i3/launcher.sh'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
