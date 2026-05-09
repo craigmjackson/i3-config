@@ -77,30 +77,32 @@ function get_states() {
 
 previous_states=$(get_states)
 while true; do
-	xrandr --current >/dev/null 2>&1
-	if [ "$?" != "0" ]; then
-		exit 0
-	fi
-	current_states=$(get_states)
-	if [ "${current_states}" != "${previous_states}" ]; then
-		if [ "${current_states}" == "0" ]; then
-			enable_0
-		elif [ "${current_states}" == "1" ]; then
-			enable_1
-		elif [ "${current_states}" == "2" ]; then
-			enable_2
-		elif [ "${current_states}" == "3" ]; then
-			enable_3
-		elif [ "${current_states}" == "1_2" ]; then
-			enable_1_2
-		elif [ "${current_states}" == "2_3" ]; then
-			enable_2_3
-		elif [ "${current_states}" == "1_3" ]; then
-			enable_1_3
-		elif [ "${current_states}" == "1_2_3" ]; then
-			enable_1_2_3
+	if [ ! -f /tmp/nodetect ]; then
+		xrandr --current >/dev/null 2>&1
+		if [ "$?" != "0" ]; then
+			exit 0
 		fi
-		previous_states=${current_states}
+		current_states=$(get_states)
+		if [ "${current_states}" != "${previous_states}" ]; then
+			if [ "${current_states}" == "0" ]; then
+				enable_0
+			elif [ "${current_states}" == "1" ]; then
+				enable_1
+			elif [ "${current_states}" == "2" ]; then
+				enable_2
+			elif [ "${current_states}" == "3" ]; then
+				enable_3
+			elif [ "${current_states}" == "1_2" ]; then
+				enable_1_2
+			elif [ "${current_states}" == "2_3" ]; then
+				enable_2_3
+			elif [ "${current_states}" == "1_3" ]; then
+				enable_1_3
+			elif [ "${current_states}" == "1_2_3" ]; then
+				enable_1_2_3
+			fi
+			previous_states=${current_states}
+		fi
+		sleep 5
 	fi
-	sleep 5
 done
